@@ -74,30 +74,50 @@ const SupportMaintenance = () => {
         {/* Hero */}
         <section className="border-b border-border bg-[#F1F5FF]">
           <div className="mx-auto max-w-[1400px] px-8 py-16 lg:px-12 lg:py-20">
-            <div className="max-w-4xl">
-              <p className="text-[10px] font-semibold tracking-[0.2em] text-accent">
-                SUPPORT & MAINTENANCE
-              </p>
+            <p className="text-[10px] font-semibold tracking-[0.2em] text-accent">
+              SUPPORT & MAINTENANCE
+            </p>
 
-              <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-ink lg:text-5xl">
-                Technology That Continues to Work
-                <br />
-                <span className="text-brand">After Launch.</span>
-              </h1>
+            <div className="mt-5 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              {/* LEFT */}
+              <div>
+                <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-ink lg:text-5xl">
+                  Technology That Continues to Work
+                  <br />
+                  <span className="text-brand">After Launch.</span>
+                </h1>
 
-              <p className="mt-6 max-w-2xl text-sm leading-6 text-muted lg:text-base">
-                We provide ongoing technical support, updates, fixes, and
-                maintenance to keep your websites and applications reliable as
-                your business grows.
-              </p>
+                <p className="mt-6 max-w-2xl text-sm leading-7 text-muted lg:text-base">
+                  We provide ongoing technical support, updates, fixes, and
+                  maintenance to keep your websites and applications reliable as
+                  your business grows.
+                </p>
 
-              <div className="mt-8">
-                <Button href="/contact">
-                  Get Technical Support
-                  <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Button>
+                <div className="mt-8">
+                  <Button href="/contact">
+                    Get Technical Support
+                    <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Button>
+                </div>
+              </div>
+
+              {/* FLOATING IMAGE */}
+              <div className="relative flex items-center justify-center lg:justify-end">
+                {/* Background accent */}
+                <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
+
+                {/* Floating card */}
+                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <div className="rounded-[20px]">
+                    <img
+                      src="/images/services/support_and_maintenance.png"
+                      alt="Technical support, software maintenance and system monitoring"
+                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -91,8 +91,9 @@ const WebDevelopment = () => {
               WEB DEVELOPMENT
             </p>
 
-            <div className="mt-5 grid gap-10 lg:grid-cols-3 lg:items-end">
-              <div className="lg:col-span-2">
+            <div className="mt-5 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              {/* LEFT */}
+              <div>
                 <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-ink lg:text-5xl">
                   Websites Built to
                   <span className="text-brand"> Support Your Business.</span>
@@ -103,22 +104,37 @@ const WebDevelopment = () => {
                   businesses communicate clearly, reach customers, and build
                   better digital experiences.
                 </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button href="/contact">
+                    Get a Quote
+                    <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Button>
+
+                  <Button href="/work" variant="secondary">
+                    View Our Work
+                    <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Button>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                <Button href="/contact">
-                  Get a Quote
-                  <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Button>
+              {/* FLOATING IMAGE */}
+              <div className="relative flex items-center justify-center lg:justify-end">
+                <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
 
-                <Button href="/work" variant="secondary">
-                  View Our Work
-                  <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Button>
+                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <div className="rounded-[20px]">
+                    <img
+                      src="/images/services/web_development.png"
+                      alt="Web development and modern website design"
+                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import DataBI from "./pages/DataBI";
 import Automation from "./pages/Automation";
 import CloudIntegrations from "./pages/CloudIntegrations";
 import SupportMaintenance from "./pages/SupportMaintenance";
-import OurWork from "./pages/OurWork";
+import WhatWeBuild from "./pages/WhatWeBuild";
 import Industries from "./pages/Industries";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -32,7 +32,7 @@ function App() {
           path="/services/support-maintenance"
           element={<SupportMaintenance />}
         />
-        <Route path="/work" element={<OurWork />} />
+        <Route path="/work" element={<WhatWeBuild />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

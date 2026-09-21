@@ -1,5 +1,45 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Globe, Code2, BarChart3, Workflow, Cloud, Wrench } from "lucide-react";
+
+const services = [
+  {
+    title: "Web Development",
+    description: "Modern websites and digital experiences.",
+    href: "/services/web-development",
+    icon: Globe,
+  },
+  {
+    title: "Custom Software",
+    description: "Applications built around your business.",
+    href: "/services/custom-software",
+    icon: Code2,
+  },
+  {
+    title: "Data & BI",
+    description: "Turn business data into useful insights.",
+    href: "/services/data-bi",
+    icon: BarChart3,
+  },
+  {
+    title: "Automation",
+    description: "Simplify workflows and reduce manual work.",
+    href: "/services/automation",
+    icon: Workflow,
+  },
+  {
+    title: "Cloud & Integrations",
+    description: "Connect platforms, tools, and systems.",
+    href: "/services/cloud-integrations",
+    icon: Cloud,
+  },
+  {
+    title: "Support & Maintenance",
+    description: "Keep your digital systems reliable.",
+    href: "/services/support-maintenance",
+    icon: Wrench,
+  },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,56 +62,40 @@ const Navbar = () => {
             Home
           </Link>
 
-          {/* Services */}
+          {/* Services Mega Menu */}
           <div className="group relative">
             <button className="flex items-center gap-1 text-sm font-medium text-[#475569] transition-colors hover:text-brand">
               Services
               <span className="text-xs">⌄</span>
             </button>
 
-            <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-              <div className="rounded-2xl border border-white/70 bg-white/80 p-2 shadow-xl backdrop-blur-xl">
-                <Link
-                  to="/services/web-development"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Web Development
-                </Link>
+            <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-white p-3 shadow-2xl">
+                {services.map((service) => {
+                  const Icon = service.icon;
 
-                <Link
-                  to="/services/custom-software"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Custom Software
-                </Link>
+                  return (
+                    <Link
+                      key={service.title}
+                      to={service.href}
+                      className="group/item flex gap-3 rounded-xl bg-white p-4 transition-all duration-200 hover:bg-white"
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EEF4FF] text-brand transition-colors group-hover/item:bg-brand group-hover/item:text-white">
+                        <Icon size={19} strokeWidth={1.8} />
+                      </div>
 
-                <Link
-                  to="/services/data-bi"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Data & BI
-                </Link>
+                      <div>
+                        <h3 className="text-sm font-semibold text-ink transition-colors group-hover/item:text-brand">
+                          {service.title}
+                        </h3>
 
-                <Link
-                  to="/services/automation"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Automation
-                </Link>
-
-                <Link
-                  to="/services/cloud-integrations"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Cloud & Integrations
-                </Link>
-
-                <Link
-                  to="/services/support-maintenance"
-                  className="block rounded-xl px-4 py-3 text-sm text-[#475569] transition-colors hover:bg-[#F5F3FF] hover:text-brand"
-                >
-                  Support & Maintenance
-                </Link>
+                        <p className="mt-1 text-[11px] leading-5 text-muted">
+                          {service.description}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -80,7 +104,7 @@ const Navbar = () => {
             to="/work"
             className="text-sm font-medium text-[#475569] transition-colors hover:text-brand"
           >
-            Our Work
+            What We Build
           </Link>
 
           <Link
@@ -118,7 +142,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="mx-4 rounded-2xl border border-white/70 bg-white/85 px-6 py-5 shadow-xl backdrop-blur-xl md:hidden">
+        <div className="mx-4 rounded-2xl border border-white/70 bg-white/90 px-6 py-5 shadow-xl backdrop-blur-xl md:hidden">
           <nav className="flex flex-col">
             <Link
               to="/"
@@ -132,60 +156,28 @@ const Navbar = () => {
               SERVICES
             </p>
 
-            <Link
-              to="/services/web-development"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Web Development
-            </Link>
+            {services.map((service) => {
+              const Icon = service.icon;
 
-            <Link
-              to="/services/custom-software"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Custom Software
-            </Link>
-
-            <Link
-              to="/services/data-bi"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Data & BI
-            </Link>
-
-            <Link
-              to="/services/automation"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Automation
-            </Link>
-
-            <Link
-              to="/services/cloud-integrations"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Cloud & Integrations
-            </Link>
-
-            <Link
-              to="/services/support-maintenance"
-              onClick={() => setMenuOpen(false)}
-              className="py-2 text-sm text-[#475569]"
-            >
-              Support & Maintenance
-            </Link>
+              return (
+                <Link
+                  key={service.title}
+                  to={service.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center gap-3 py-3 text-sm text-[#475569]"
+                >
+                  <Icon size={17} className="text-brand" />
+                  {service.title}
+                </Link>
+              );
+            })}
 
             <Link
               to="/work"
               onClick={() => setMenuOpen(false)}
               className="border-t border-border py-3 text-sm text-[#475569]"
             >
-              Our Work
+              What We Build
             </Link>
 
             <Link

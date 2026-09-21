@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
+// @ts-ignore
+import CapabilityVisual from "../components/CapabilityVisual";
 
 const Hero = () => {
   const headlineWords = ["Business.", "Workflow.", "Growth.", "Goals."];
@@ -49,12 +51,10 @@ const Hero = () => {
 
     let delay = isDeleting ? 130 : 180;
 
-    // Pause when word is completely typed
     if (!isDeleting && displayWord === currentWord) {
       delay = 2200;
     }
 
-    // Pause before typing the next word
     if (isDeleting && displayWord === "") {
       delay = 600;
     }
@@ -146,6 +146,16 @@ const Hero = () => {
 
             <div className="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-brand/20 blur-2xl" />
 
+            {/* Grid */}
+            <div
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+              }}
+            />
+
             <div className="relative flex h-full flex-col">
               {/* Header */}
               <div className="flex items-center justify-between">
@@ -158,25 +168,31 @@ const Hero = () => {
                 </span>
               </div>
 
-              {/* Service */}
-              <div className="mt-10">
+              {/* Service Info */}
+              <div className="mt-8">
                 <p className="text-[10px] tracking-[0.18em] text-slate-400">
                   CURRENT CAPABILITY
                 </p>
 
-                <div key={currentService.number} className="mt-5">
-                  <h2 className="text-xl font-semibold tracking-tight">
+                <div key={currentService.number} className="mt-4">
+                  <h2 className="text-2xl font-semibold tracking-tight">
                     {currentService.title}
                   </h2>
 
-                  <p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">
+                  <p className="mt-2 max-w-sm text-sm leading-6 text-slate-400">
                     {currentService.description}
                   </p>
                 </div>
               </div>
 
-              {/* Indicators */}
-              <div className="mt-auto">
+              {/* Capability Visual */}
+              <div className="relative mt-6 flex flex-1 items-center justify-center">
+                <CapabilityVisual serviceIndex={serviceIndex} />
+              </div>
+
+              {/* Bottom */}
+              <div className="mt-5">
+                {/* Indicators */}
                 <div className="flex gap-2">
                   {services.map((service, index) => (
                     <button
@@ -193,18 +209,18 @@ const Hero = () => {
                 </div>
 
                 {/* Status */}
-                <div className="mt-8 flex items-end justify-between border-t border-white/10 pt-5">
-                  <div>
-                    <p className="text-[9px] tracking-[0.18em] text-slate-500">
-                      SYSTEM STATUS
-                    </p>
+                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                  <div className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#60A5FA]" />
 
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#60A5FA]" />
-
-                      <span className="text-xs text-slate-300">ONLINE</span>
-                    </div>
+                    <span className="text-[9px] tracking-[0.18em] text-slate-400">
+                      SYSTEM ONLINE
+                    </span>
                   </div>
+
+                  <span className="text-[9px] tracking-[0.15em] text-slate-600">
+                    VIXIT / DIGITAL
+                  </span>
                 </div>
               </div>
             </div>

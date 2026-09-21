@@ -94,7 +94,7 @@ const Footer = () => {
                 to="/work"
                 className="block transition-colors hover:text-[#60A5FA]"
               >
-                Our Work
+                What We Build
               </Link>
 
               <Link
