@@ -9,6 +9,7 @@ const solutions = [
     description:
       "Automate repetitive spreadsheet operations, calculations, formatting, and data processing.",
     accent: "bg-brand",
+    image: "/images/services/excel-automation.jpeg",
   },
   {
     number: "02",
@@ -16,6 +17,7 @@ const solutions = [
     description:
       "Generate recurring business reports without manually collecting and formatting data every time.",
     accent: "bg-accent",
+    image: "/images/services/report-generation.jpeg",
   },
   {
     number: "03",
@@ -23,6 +25,7 @@ const solutions = [
     description:
       "Automate repetitive data cleaning, transformation, and processing tasks.",
     accent: "bg-cyan-500",
+    image: "/images/services/data-processing.jpeg",
   },
   {
     number: "04",
@@ -30,6 +33,7 @@ const solutions = [
     description:
       "Automatically generate structured documents, spreadsheets, and business outputs.",
     accent: "bg-brand",
+    image: "/images/services/pdf-excel-generation.jpeg",
   },
   {
     number: "05",
@@ -37,6 +41,7 @@ const solutions = [
     description:
       "Automate recurring email notifications, reports, and business communication workflows.",
     accent: "bg-accent",
+    image: "/images/services/email-workflows.jpeg",
   },
   {
     number: "06",
@@ -44,12 +49,14 @@ const solutions = [
     description:
       "Connect systems and automate data exchange through APIs and integrations.",
     accent: "bg-cyan-500",
+    image: "/images/services/api-automation.jpeg",
   },
   {
     number: "07",
     title: "Scheduled Tasks",
     description: "Run recurring processes automatically on a defined schedule.",
     accent: "bg-brand",
+    image: "/images/services/scheduled-tasks.jpeg",
   },
   {
     number: "08",
@@ -57,6 +64,7 @@ const solutions = [
     description:
       "Replace manual multi-step processes with reliable automated workflows.",
     accent: "bg-accent",
+    image: "/images/services/business-workflows.jpeg",
   },
 ];
 
@@ -125,17 +133,15 @@ const Automation = () => {
               {/* FLOATING IMAGE */}
               <div className="relative flex items-center justify-center lg:justify-end">
                 {/* Background accent */}
-                <div className="absolute h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+                <div className="absolute h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
                 {/* Floating card */}
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/automation.png"
-                      alt="Business process automation and workflow automation"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
+                  <img
+                    src="/images/services/automation.png"
+                    alt="Business process automation and workflow automation"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -166,25 +172,33 @@ const Automation = () => {
                 {solutions.map((solution) => (
                   <div
                     key={solution.number}
-                    className="group rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
-                        {solution.number}
-                      </span>
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                      <span
-                        className={`h-2 w-2 rounded-full ${solution.accent}`}
-                      />
+                    <div className="p-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
+                          {solution.number}
+                        </span>
+
+                        <span
+                          className={`h-2 w-2 rounded-full ${solution.accent}`}
+                        />
+                      </div>
+
+                      <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
+                        {solution.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-muted">
+                        {solution.description}
+                      </p>
                     </div>
-
-                    <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
-                      {solution.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-6 text-muted">
-                      {solution.description}
-                    </p>
                   </div>
                 ))}
               </div>

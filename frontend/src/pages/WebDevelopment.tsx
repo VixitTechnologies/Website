@@ -41,41 +41,47 @@ const WebDevelopment = () => {
       description:
         "Professional websites that clearly communicate your company, services, and value to potential customers.",
       accent: "bg-brand",
+      image: "/images/services/corporate-website.jpeg",
     },
     {
       number: "02",
       title: "E-commerce",
       description:
         "Online stores designed to showcase products and create a smooth purchasing experience.",
-      accent: "bg-accent",
+      accent: "bg-purple-500",
+      image: "/images/services/ecommerce.jpeg",
     },
     {
       number: "03",
       title: "Landing Pages",
       description:
         "Focused pages built around a specific product, service, campaign, or business objective.",
-      accent: "bg-cyan-500",
+      accent: "bg-blue-500",
+      image: "/images/services/landing-page.jpeg",
     },
     {
       number: "04",
       title: "Booking Platforms",
       description:
         "Web-based booking experiences that make it easier for customers to discover and schedule your services.",
-      accent: "bg-brand",
+      accent: "bg-pink-500",
+      image: "/images/services/booking-platform.jpeg",
     },
     {
       number: "05",
       title: "Website Redesign",
       description:
         "Modernize an existing website with a clearer structure, improved experience, and responsive design.",
-      accent: "bg-accent",
+      accent: "bg-orange-500",
+      image: "/images/services/website-redesign.jpeg",
     },
     {
       number: "06",
       title: "Responsive Websites",
       description:
         "Websites designed to provide a consistent experience across desktops, tablets, and mobile devices.",
-      accent: "bg-cyan-500",
+      accent: "bg-green-500",
+      image: "/images/services/responsive-website.jpeg",
     },
   ];
 
@@ -124,16 +130,14 @@ const WebDevelopment = () => {
 
               {/* FLOATING IMAGE */}
               <div className="relative flex items-center justify-center lg:justify-end">
-                <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
+                <div className="absolute h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
 
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/web_development.png"
-                      alt="Web development and modern website design"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <img
+                    src="/images/services/web_development.png"
+                    alt="Web development and modern website design"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -234,35 +238,42 @@ const WebDevelopment = () => {
               {solutions.map((solution) => (
                 <div
                   key={solution.number}
-                  className="group min-h-[210px] rounded-2xl border border-border bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`h-2 w-2 rounded-full ${solution.accent}`}
-                      />
+                  <img
+                    src={solution.image}
+                    alt={solution.title}
+                    className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="p-7">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`h-2 w-2 rounded-full ${solution.accent}`}
+                        />
 
-                      <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
-                        {solution.number}
+                        <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
+                          {solution.number}
+                        </span>
+                      </div>
+
+                      <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
+                        →
                       </span>
                     </div>
 
-                    <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
-                      →
-                    </span>
+                    <div
+                      className={`mt-8 h-1 w-10 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-16`}
+                    />
+
+                    <h3 className="mt-6 text-base font-semibold text-ink">
+                      {solution.title}
+                    </h3>
+
+                    <p className="mt-3 text-xs leading-6 text-muted">
+                      {solution.description}
+                    </p>
                   </div>
-
-                  <div
-                    className={`mt-8 h-1 w-10 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-16`}
-                  />
-
-                  <h3 className="mt-6 text-base font-semibold text-ink">
-                    {solution.title}
-                  </h3>
-
-                  <p className="mt-3 text-xs leading-6 text-muted">
-                    {solution.description}
-                  </p>
                 </div>
               ))}
             </div>

@@ -4,7 +4,14 @@ import Button from "../components/Button";
 import CapabilityVisual from "../components/CapabilityVisual";
 
 const Hero = () => {
-  const headlineWords = ["Business.", "Workflow.", "Growth.", "Goals."];
+  const headlineWords = [
+    "Business.",
+    "Workflow.",
+    "Growth.",
+    "Goals.",
+    "Innovation.",
+    "Efficiency.",
+  ];
 
   const services = [
     {
@@ -46,17 +53,18 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [serviceIndex, setServiceIndex] = useState(0);
 
+  // Rotating headline words
   useEffect(() => {
     const currentWord = headlineWords[wordIndex];
 
-    let delay = isDeleting ? 130 : 180;
+    let delay = isDeleting ? 180 : 250;
 
     if (!isDeleting && displayWord === currentWord) {
-      delay = 2200;
+      delay = 2800;
     }
 
     if (isDeleting && displayWord === "") {
-      delay = 600;
+      delay = 700;
     }
 
     const timer = setTimeout(() => {
@@ -83,7 +91,7 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayWord, isDeleting, wordIndex]);
 
-  // Rotating service
+  // Rotating services
   useEffect(() => {
     const interval = setInterval(() => {
       setServiceIndex((current) => (current + 1) % services.length);
@@ -97,9 +105,9 @@ const Hero = () => {
   return (
     <section className="border-b border-[#E2E8F0] bg-[#F1F5FF]">
       <div className="mx-auto max-w-[1400px] px-6 py-12 lg:px-8 lg:py-14">
-        <div className="grid gap-4 md:grid-cols-[1.35fr_0.65fr]">
+        <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-[1.35fr_0.65fr]">
           {/* LEFT */}
-          <div className="flex min-h-[440px] flex-col justify-center rounded-2xl border border-[#E2E8F0] bg-white p-8 shadow-sm lg:p-12">
+          <div className="flex h-full min-h-[460px] flex-col justify-center rounded-2xl border border-[#E2E8F0] bg-white p-7 shadow-sm sm:p-9 lg:p-10">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
 
@@ -110,7 +118,7 @@ const Hero = () => {
 
             <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.15] tracking-tight text-ink lg:text-[48px]">
               Technology Built Around Your
-              <span className="block text-brand">
+              <span className="block min-h-[1.15em] text-brand">
                 {displayWord}
                 <span className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-brand align-[-0.1em]" />
               </span>
@@ -140,10 +148,9 @@ const Hero = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="relative min-h-[440px] overflow-hidden rounded-2xl bg-[#111827] p-7 text-white shadow-sm lg:p-8">
+          <div className="relative flex h-full min-h-[460px] flex-col overflow-hidden rounded-2xl bg-[#111827] p-7 text-white shadow-sm sm:p-8">
             {/* Decorative shapes */}
             <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/20 blur-2xl" />
-
             <div className="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-brand/20 blur-2xl" />
 
             {/* Grid */}
@@ -156,7 +163,7 @@ const Hero = () => {
               }}
             />
 
-            <div className="relative flex h-full flex-col">
+            <div className="relative flex flex-1 flex-col">
               {/* Header */}
               <div className="flex items-center justify-between">
                 <p className="text-[10px] font-semibold tracking-[0.18em] text-slate-400">
@@ -192,13 +199,13 @@ const Hero = () => {
 
               {/* Bottom */}
               <div className="mt-5">
-                {/* Indicators */}
                 <div className="flex gap-2">
                   {services.map((service, index) => (
                     <button
                       key={service.number}
                       onClick={() => setServiceIndex(index)}
                       aria-label={`Show ${service.title}`}
+                      aria-pressed={index === serviceIndex}
                       className={`h-1.5 rounded-full transition-all duration-300 ${
                         index === serviceIndex
                           ? "w-8 bg-brand"
@@ -208,7 +215,6 @@ const Hero = () => {
                   ))}
                 </div>
 
-                {/* Status */}
                 <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
                   <div className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#60A5FA]" />

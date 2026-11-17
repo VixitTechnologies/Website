@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Globe, Code2, BarChart3, Workflow, Cloud, Wrench } from "lucide-react";
+import {
+  Globe,
+  Code2,
+  BarChart3,
+  Workflow,
+  Cloud,
+  Wrench,
+  ChevronDown,
+} from "lucide-react";
 
 const services = [
   {
@@ -48,13 +56,23 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full bg-[#F1F5FF]/80 px-4 pt-4 backdrop-blur-sm md:px-6 md:pt-5">
       <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between rounded-full border border-white/80 bg-white/35 px-5 shadow-[0_8px_35px_rgba(148,163,184,0.18),inset_0_1px_1px_rgba(255,255,255,0.9)] backdrop-blur-2xl md:px-6">
         {/* Logo */}
-        <Link to="/" className="text-base font-bold tracking-tight text-ink">
-          VIXIT
-          <span className="ml-1 font-normal text-muted">TECHNOLOGIES</span>
+        <Link to="/" className="flex shrink-0 items-center">
+          <img
+            src="images/logo.jpeg"
+            alt="Vixit Technologies"
+            className="h-10 w-auto object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+          <span className="ml-2 text-base font-bold tracking-tight text-ink">
+            VIXIT
+            <span className="ml-1 font-normal text-muted">TECHNOLOGIES</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:gap-8 md:flex">
           <Link
             to="/"
             className="text-sm font-medium text-[#475569] transition-colors hover:text-brand"
@@ -64,12 +82,19 @@ const Navbar = () => {
 
           {/* Services Mega Menu */}
           <div className="group relative">
-            <button className="flex items-center gap-1 text-sm font-medium text-[#475569] transition-colors hover:text-brand">
+            <button
+              type="button"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#475569] transition-colors hover:text-brand"
+            >
               Services
-              <span className="text-xs">⌄</span>
+              <ChevronDown
+                size={15}
+                strokeWidth={2}
+                className="mt-px transition-transform duration-200 group-hover:rotate-180"
+              />
             </button>
 
-            <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-white p-3 shadow-2xl">
                 {services.map((service) => {
                   const Icon = service.icon;
@@ -78,7 +103,7 @@ const Navbar = () => {
                     <Link
                       key={service.title}
                       to={service.href}
-                      className="group/item flex gap-3 rounded-xl bg-white p-4 transition-all duration-200 hover:bg-white"
+                      className="group/item flex gap-3 rounded-xl p-4 transition-all duration-200 hover:bg-[#F1F5FF]"
                     >
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EEF4FF] text-brand transition-colors group-hover/item:bg-brand group-hover/item:text-white">
                         <Icon size={19} strokeWidth={1.8} />
@@ -88,7 +113,6 @@ const Navbar = () => {
                         <h3 className="text-sm font-semibold text-ink transition-colors group-hover/item:text-brand">
                           {service.title}
                         </h3>
-
                         <p className="mt-1 text-[11px] leading-5 text-muted">
                           {service.description}
                         </p>
@@ -124,7 +148,7 @@ const Navbar = () => {
 
         {/* Get a Quote */}
         <Link
-          to="/contact"
+          to="/get-a-quote"
           className="hidden rounded-full border border-brand/20 bg-brand px-5 py-3 text-sm font-medium text-white shadow-md transition-all duration-300 hover:bg-accent hover:shadow-lg md:block"
         >
           Get a Quote →
@@ -135,6 +159,7 @@ const Navbar = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           className="rounded-full border border-white/60 bg-white/60 px-4 py-2 text-xl text-ink shadow-sm backdrop-blur-xl md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? "×" : "☰"}
         </button>
@@ -197,7 +222,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/contact"
+              to="/get-a-quote"
               onClick={() => setMenuOpen(false)}
               className="mt-3 rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-accent"
             >

@@ -19,6 +19,7 @@ const DataBI = () => {
       description:
         "Interactive dashboards that make important business metrics easier to understand.",
       accent: "bg-brand",
+      image: "/images/services/power-bi-dashboards.jpeg",
     },
     {
       number: "02",
@@ -26,6 +27,7 @@ const DataBI = () => {
       description:
         "Structured reports designed around the information your teams need to monitor.",
       accent: "bg-accent",
+      image: "/images/services/business-reports.jpeg",
     },
     {
       number: "03",
@@ -33,6 +35,7 @@ const DataBI = () => {
       description:
         "Connect databases and transform operational data into business-ready dashboards.",
       accent: "bg-cyan-500",
+      image: "/images/services/sql-power-bi.jpeg",
     },
     {
       number: "04",
@@ -40,6 +43,7 @@ const DataBI = () => {
       description:
         "Prepare inconsistent or raw data for reliable analysis and reporting.",
       accent: "bg-brand",
+      image: "/images/services/data-cleaning.jpeg",
     },
     {
       number: "05",
@@ -47,6 +51,7 @@ const DataBI = () => {
       description:
         "Automate data preparation and create repeatable transformation workflows.",
       accent: "bg-accent",
+      image: "/images/services/power-query.jpeg",
     },
     {
       number: "06",
@@ -54,6 +59,7 @@ const DataBI = () => {
       description:
         "Create calculated measures and business logic for meaningful Power BI analysis.",
       accent: "bg-cyan-500",
+      image: "/images/services/dax.jpeg",
     },
     {
       number: "07",
@@ -61,6 +67,7 @@ const DataBI = () => {
       description:
         "Reduce repetitive spreadsheet work with structured and automated processes.",
       accent: "bg-brand",
+      image: "/images/services/excel-automation.jpeg",
     },
     {
       number: "08",
@@ -68,6 +75,7 @@ const DataBI = () => {
       description:
         "Track the metrics that matter most to your business through focused visual reporting.",
       accent: "bg-accent",
+      image: "/images/services/kpi-dashboards.jpeg",
     },
   ];
 
@@ -170,17 +178,15 @@ const DataBI = () => {
               {/* FLOATING IMAGE */}
               <div className="relative flex items-center justify-center lg:justify-end">
                 {/* Background accent */}
-                <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
+                <div className="absolute h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
 
                 {/* Floating card */}
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/data_and_bi.png"
-                      alt="Data analytics, business intelligence and dashboards"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <img
+                    src="/images/services/data_and_bi.png"
+                    alt="Data analytics, business intelligence and dashboards"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -221,35 +227,43 @@ const DataBI = () => {
                 {solutions.map((solution) => (
                   <div
                     key={solution.number}
-                    className="group min-h-[200px] rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
+                    className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`h-2 w-2 rounded-full ${solution.accent}`}
-                        />
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                        <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
-                          {solution.number}
+                    <div className="p-7">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`h-2 w-2 rounded-full ${solution.accent}`}
+                          />
+
+                          <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
+                            {solution.number}
+                          </span>
+                        </div>
+
+                        <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
+                          →
                         </span>
                       </div>
 
-                      <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
-                        →
-                      </span>
+                      <div
+                        className={`mt-7 h-1 w-9 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-14`}
+                      />
+
+                      <h3 className="mt-5 text-sm font-semibold text-ink">
+                        {solution.title}
+                      </h3>
+
+                      <p className="mt-2 text-xs leading-5 text-muted">
+                        {solution.description}
+                      </p>
                     </div>
-
-                    <div
-                      className={`mt-7 h-1 w-9 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-14`}
-                    />
-
-                    <h3 className="mt-5 text-sm font-semibold text-ink">
-                      {solution.title}
-                    </h3>
-
-                    <p className="mt-2 text-xs leading-5 text-muted">
-                      {solution.description}
-                    </p>
                   </div>
                 ))}
               </div>

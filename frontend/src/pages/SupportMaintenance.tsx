@@ -9,6 +9,7 @@ const services = [
     description:
       "Keep website content, features, and dependencies updated as your business evolves.",
     accent: "bg-brand",
+    image: "/images/services/website-redesign.jpeg",
   },
   {
     number: "02",
@@ -16,6 +17,7 @@ const services = [
     description:
       "Identify and resolve technical issues affecting your website or application.",
     accent: "bg-accent",
+    image: "/images/services/bug-fixes.jpeg",
   },
   {
     number: "03",
@@ -23,6 +25,7 @@ const services = [
     description:
       "Improve application performance, responsiveness, and reliability over time.",
     accent: "bg-cyan-500",
+    image: "/images/services/performance-improvements.jpeg",
   },
   {
     number: "04",
@@ -30,6 +33,7 @@ const services = [
     description:
       "Monitor applications and help identify issues before they become larger operational problems.",
     accent: "bg-brand",
+    image: "/images/services/monitoring.jpeg",
   },
   {
     number: "05",
@@ -37,6 +41,7 @@ const services = [
     description:
       "Get technical assistance when your team needs help with existing systems.",
     accent: "bg-accent",
+    image: "/images/services/technical-support.jpeg",
   },
   {
     number: "06",
@@ -44,6 +49,7 @@ const services = [
     description:
       "Continue improving and maintaining your technology after the initial launch.",
     accent: "bg-cyan-500",
+    image: "/images/services/post-launch-support.jpeg",
   },
 ];
 
@@ -109,14 +115,12 @@ const SupportMaintenance = () => {
                 <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
 
                 {/* Floating card */}
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/support_and_maintenance.png"
-                      alt="Technical support, software maintenance and system monitoring"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <img
+                    src="/images/services/support_and_maintenance.png"
+                    alt="Technical support, software maintenance and system monitoring"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -147,25 +151,33 @@ const SupportMaintenance = () => {
                 {services.map((service) => (
                   <div
                     key={service.number}
-                    className="group rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
-                        {service.number}
-                      </span>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                      <span
-                        className={`h-2 w-2 rounded-full ${service.accent}`}
-                      />
+                    <div className="p-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
+                          {service.number}
+                        </span>
+
+                        <span
+                          className={`h-2 w-2 rounded-full ${service.accent}`}
+                        />
+                      </div>
+
+                      <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
+                        {service.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-muted">
+                        {service.description}
+                      </p>
                     </div>
-
-                    <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-6 text-muted">
-                      {service.description}
-                    </p>
                   </div>
                 ))}
               </div>

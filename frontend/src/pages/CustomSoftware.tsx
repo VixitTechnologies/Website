@@ -10,6 +10,7 @@ const CustomSoftware = () => {
       description:
         "Centralized systems to manage business operations, information, and workflows.",
       accent: "bg-brand",
+      image: "/images/services/business-management.jpeg",
     },
     {
       number: "02",
@@ -17,6 +18,7 @@ const CustomSoftware = () => {
       description:
         "Manage leads, customer information, follow-ups, and sales processes in one place.",
       accent: "bg-accent",
+      image: "/images/services/crm-lead-management.jpeg",
     },
     {
       number: "03",
@@ -24,6 +26,7 @@ const CustomSoftware = () => {
       description:
         "Track suppliers, records, transactions, and operational information efficiently.",
       accent: "bg-cyan-500",
+      image: "/images/services/supplier-management.jpeg",
     },
     {
       number: "04",
@@ -31,6 +34,7 @@ const CustomSoftware = () => {
       description:
         "Custom booking workflows for appointments, travel, reservations, and services.",
       accent: "bg-brand",
+      image: "/images/services/booking-platform.jpeg",
     },
     {
       number: "05",
@@ -38,6 +42,7 @@ const CustomSoftware = () => {
       description:
         "Clear dashboards for managing users, operations, records, and business activity.",
       accent: "bg-accent",
+      image: "/images/services/admin-dashboard.jpeg",
     },
     {
       number: "06",
@@ -45,6 +50,7 @@ const CustomSoftware = () => {
       description:
         "Secure internal applications that give teams access to the information and tools they need.",
       accent: "bg-cyan-500",
+      image: "/images/services/internal-portals.jpeg",
     },
     {
       number: "07",
@@ -52,6 +58,7 @@ const CustomSoftware = () => {
       description:
         "Digitize manual processes and create structured workflows for everyday business tasks.",
       accent: "bg-brand",
+      image: "/images/services/workflow-applications.jpeg",
     },
     {
       number: "08",
@@ -59,6 +66,7 @@ const CustomSoftware = () => {
       description:
         "Reports tailored to the metrics and information your business needs to monitor.",
       accent: "bg-accent",
+      image: "/images/services/custom-reporting.jpeg",
     },
   ];
 
@@ -131,17 +139,15 @@ const CustomSoftware = () => {
               {/* FLOATING IMAGE */}
               <div className="relative flex items-center justify-center lg:justify-end">
                 {/* Background accent */}
-                <div className="absolute h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+                <div className="absolute h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
                 {/* Floating card */}
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/custom_software.png"
-                      alt="Custom software and business application development"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
+                  <img
+                    src="/images/services/custom_software.png"
+                    alt="Custom software and business application development"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -180,35 +186,43 @@ const CustomSoftware = () => {
                 {solutions.map((solution) => (
                   <div
                     key={solution.number}
-                    className="group min-h-[200px] rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
+                    className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`h-2 w-2 rounded-full ${solution.accent}`}
-                        />
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                        <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
-                          {solution.number}
+                    <div className="p-7">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`h-2 w-2 rounded-full ${solution.accent}`}
+                          />
+
+                          <span className="text-[10px] font-semibold tracking-wider text-subtle transition-colors duration-200 group-hover:text-brand">
+                            {solution.number}
+                          </span>
+                        </div>
+
+                        <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
+                          →
                         </span>
                       </div>
 
-                      <span className="text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:text-brand">
-                        →
-                      </span>
+                      <div
+                        className={`mt-7 h-1 w-9 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-14`}
+                      />
+
+                      <h3 className="mt-5 text-sm font-semibold text-ink">
+                        {solution.title}
+                      </h3>
+
+                      <p className="mt-2 text-xs leading-5 text-muted">
+                        {solution.description}
+                      </p>
                     </div>
-
-                    <div
-                      className={`mt-7 h-1 w-9 rounded-full ${solution.accent} transition-all duration-300 group-hover:w-14`}
-                    />
-
-                    <h3 className="mt-5 text-sm font-semibold text-ink">
-                      {solution.title}
-                    </h3>
-
-                    <p className="mt-2 text-xs leading-5 text-muted">
-                      {solution.description}
-                    </p>
                   </div>
                 ))}
               </div>

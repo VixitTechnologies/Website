@@ -36,14 +36,38 @@ const About = () => {
     },
   ];
 
-  const process = [
-    ["01", "Discover"],
-    ["02", "Plan"],
-    ["03", "Design"],
-    ["04", "Develop"],
-    ["05", "Test"],
-    ["06", "Launch"],
-    ["07", "Support"],
+  // Six steps matching the homepage
+  const processSteps = [
+    {
+      number: "01",
+      title: "Discover",
+      description: "Understand your business, goals, and requirements.",
+    },
+    {
+      number: "02",
+      title: "Plan",
+      description: "Define the scope, features, and approach for the solution.",
+    },
+    {
+      number: "03",
+      title: "Design",
+      description: "Create a clear and practical design around your needs.",
+    },
+    {
+      number: "04",
+      title: "Build",
+      description: "Develop the solution using suitable technologies.",
+    },
+    {
+      number: "05",
+      title: "Test",
+      description: "Check functionality, fix issues, and ensure quality.",
+    },
+    {
+      number: "06",
+      title: "Launch",
+      description: "Deploy the solution and prepare it for use.",
+    },
   ];
 
   return (
@@ -159,39 +183,75 @@ const About = () => {
           </div>
         </section>
 
-        {/* PROCESS */}
-        <section className="bg-white">
-          <div className="mx-auto max-w-[1400px] px-8 py-20 lg:px-12">
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-accent">
-              OUR PROCESS
-            </p>
+        {/* WORKING PROCESS */}
+        <section className="relative z-20 bg-white">
+          {/* Decorative accent */}
+          <div className="absolute -right-24 top-20 h-64 w-64 rounded-full bg-[#DDD6FE] opacity-40 blur-3xl" />
 
-            <h2 className="mt-4 max-w-2xl text-2xl font-semibold tracking-tight text-ink lg:text-3xl">
-              A clear process from idea
-              <span className="text-brand"> to implementation.</span>
-            </h2>
+          <div className="relative mx-auto max-w-[1400px] px-8 py-20 lg:px-12">
+            <div className="max-w-xl">
+              <p className="text-[10px] font-semibold tracking-[0.2em] text-brand">
+                HOW WE WORK
+              </p>
 
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
-              {process.map(([number, title], index) => (
-                <div
-                  key={number}
-                  className="group rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md"
-                >
-                  <p className="text-[10px] font-semibold tracking-wider text-subtle">
-                    {number}
-                  </p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink lg:text-3xl">
+                From Idea to
+                <span className="text-accent"> Working Solution.</span>
+              </h2>
 
-                  <div className="mt-5 h-8 w-8 rounded-full bg-[#EEF4FF] text-center text-xs font-semibold leading-8 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-                    {index + 1}
-                  </div>
+              <p className="mt-4 text-sm leading-6 text-muted">
+                A clear and transparent process that keeps every stage focused
+                on your business requirements.
+              </p>
+            </div>
 
-                  <p className="mt-4 text-sm font-semibold text-ink">{title}</p>
+            <div className="mt-10">
+              <div className="relative">
+                {/* Line */}
+                <div className="absolute left-[7%] right-[7%] top-6 hidden h-px bg-[#BFDBFE] md:block" />
+
+                {/* STEPS */}
+                <div className="relative grid gap-8 sm:grid-cols-2 md:grid-cols-6 md:gap-0">
+                  {processSteps.map((step, index) => (
+                    <div
+                      key={step.number}
+                      className="group relative z-10 flex flex-col items-center text-center md:px-2"
+                    >
+                      {/* NUMBER */}
+                      <div
+                        className={`flex h-12 w-12 items-center justify-center rounded-full bg-white text-xs font-bold shadow-sm ring-4 ring-[#EEF4FF] transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-110 ${
+                          index % 2 === 0
+                            ? "text-brand group-hover:bg-brand group-hover:text-white"
+                            : "text-accent group-hover:bg-accent group-hover:text-white"
+                        }`}
+                      >
+                        {step.number}
+                      </div>
+
+                      {/* TITLE */}
+                      <h3
+                        className={`mt-4 text-xs font-semibold transition-colors duration-300 ${
+                          index % 2 === 0
+                            ? "text-[#475569] group-hover:text-brand"
+                            : "text-[#475569] group-hover:text-accent"
+                        }`}
+                      >
+                        {step.title}
+                      </h3>
+
+                      {/* HOVER DESCRIPTION */}
+                      <div className="pointer-events-none absolute left-1/2 top-[78px] z-50 w-48 -translate-x-1/2 translate-y-2 rounded-xl border border-[#DDE5F0] bg-white p-4 text-left opacity-0 shadow-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <p className="text-[11px] leading-5 text-muted">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
-
         {/* CTA */}
         <section className="bg-[#EEF4FF]">
           <div className="mx-auto max-w-[1400px] px-8 py-16 lg:px-12">

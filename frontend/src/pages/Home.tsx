@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../sections/Hero";
 import Button from "../components/Button";
-import Services from "../sections/services";
+import Services from "../sections/Services";
 import { useState } from "react";
 import {
   SiReact,
@@ -132,7 +132,7 @@ const Home = () => {
         <Services />
 
         {/* VALUE PROPOSITION */}
-        <section className="bg-white">
+        <section className="bg-[#EEF4FF]">
           <div className="mx-auto max-w-[1400px] px-8 py-16 lg:px-12">
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.5fr] lg:items-start">
               {/* INTRO */}
@@ -156,7 +156,7 @@ const Home = () => {
                     01 — BUSINESS-FIRST
                   </p>
 
-                  <h3 className="mt-3 text-sm font-semibold text-ink">
+                  <h3 className="mt-3 text-sm font-bold text-ink transition-colors duration-300 group-hover:text-brand">
                     Built Around Your Business
                   </h3>
 
@@ -173,7 +173,7 @@ const Home = () => {
                     02 — CAPABILITIES
                   </p>
 
-                  <h3 className="mt-3 text-sm font-semibold text-ink">
+                  <h3 className="mt-3 text-sm font-bold text-ink transition-colors duration-300 group-hover:text-brand">
                     From Web to Automation
                   </h3>
 
@@ -190,7 +190,7 @@ const Home = () => {
                     03 — PARTNERSHIP
                   </p>
 
-                  <h3 className="mt-3 text-sm font-semibold text-ink">
+                  <h3 className="mt-3 text-sm font-bold text-ink transition-colors duration-300 group-hover:text-brand">
                     Built to Grow With You
                   </h3>
 
@@ -205,7 +205,7 @@ const Home = () => {
         </section>
 
         {/* WORKING PROCESS */}
-        <section className="relative z-20 bg-[#EEF4FF]">
+        <section className="relative z-20 bg-white">
           {/* Decorative accent */}
           <div className="absolute -right-24 top-20 h-64 w-64 rounded-full bg-[#DDD6FE] opacity-40 blur-3xl" />
 
@@ -275,7 +275,7 @@ const Home = () => {
         </section>
 
         {/* TECHNOLOGIES */}
-        <section className="bg-white">
+        <section className="bg-[#EEF4FF]">
           <div className="mx-auto max-w-[1400px] px-8 py-20 lg:px-12">
             {/* HEADER */}
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -324,7 +324,10 @@ const Home = () => {
             </div>
 
             {/* CONTENT */}
-            <div className="mt-12 grid gap-10 md:grid-cols-[0.7fr_1.3fr]">
+            <div
+              key={activeTechnology}
+              className="mt-12 grid gap-10 md:grid-cols-[0.7fr_1.3fr] animate-[technologyFadeIn_450ms_ease-out]"
+            >
               {/* LEFT */}
               <div>
                 <p className="text-[10px] font-semibold tracking-[0.18em] text-muted">
@@ -342,12 +345,16 @@ const Home = () => {
               <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-3">
                 {technologies[
                   activeTechnology as keyof typeof technologies
-                ].map((technology) => {
+                ].map((technology, index) => {
                   const Icon = technology.icon;
 
                   return (
                     <div
-                      key={technology.name}
+                      key={`${activeTechnology}-${technology.name}`}
+                      style={{
+                        animation: "technologyFadeIn 450ms ease-out both",
+                        animationDelay: `${index * 70}ms`,
+                      }}
                       className="group flex items-center gap-3 transition-all duration-300 hover:translate-x-1"
                     >
                       {/* LOGO */}

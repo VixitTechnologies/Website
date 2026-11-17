@@ -18,6 +18,7 @@ const solutions = [
     description:
       "Deploy and configure applications in cloud environments with a focus on reliability and scalability.",
     accent: "bg-brand",
+    image: "/images/services/cloud-deployment.jpeg",
   },
   {
     number: "02",
@@ -25,6 +26,7 @@ const solutions = [
     description:
       "Build APIs that allow applications and business systems to communicate securely and efficiently.",
     accent: "bg-accent",
+    image: "/images/services/rest-apis.jpeg",
   },
   {
     number: "03",
@@ -32,6 +34,7 @@ const solutions = [
     description:
       "Connect your applications with the external platforms and services your business depends on.",
     accent: "bg-cyan-500",
+    image: "/images/services/third-party-integrations.jpeg",
   },
   {
     number: "04",
@@ -39,6 +42,7 @@ const solutions = [
     description:
       "Integrate payment providers into websites and applications to support online transactions.",
     accent: "bg-brand",
+    image: "/images/services/payment-integration.jpeg",
   },
   {
     number: "05",
@@ -46,6 +50,7 @@ const solutions = [
     description:
       "Connect business workflows with WhatsApp-based communication and notifications.",
     accent: "bg-accent",
+    image: "/images/services/whatsapp-integration.jpeg",
   },
   {
     number: "06",
@@ -53,6 +58,7 @@ const solutions = [
     description:
       "Integrate AI capabilities into applications through external AI APIs where they provide practical value.",
     accent: "bg-cyan-500",
+    image: "/images/services/ai-api-integration.jpeg",
   },
 ];
 
@@ -152,17 +158,15 @@ const CloudIntegrations = () => {
               {/* FLOATING IMAGE */}
               <div className="relative flex items-center justify-center lg:justify-end">
                 {/* Background accent */}
-                <div className="absolute h-64 w-64 rounded-full bg-brand/10 blur-3xl" />
+                <div className="absolute h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
 
                 {/* Floating card */}
-                <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
-                  <div className="rounded-[20px]">
-                    <img
-                      src="/images/services/cloud_and_integrations.png"
-                      alt="Cloud computing, APIs and connected business systems"
-                      className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                    />
-                  </div>
+                <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(37,99,235,0.20)]">
+                  <img
+                    src="/images/services/cloud_and_integrations.png"
+                    alt="Cloud computing, APIs and connected business systems"
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -193,25 +197,33 @@ const CloudIntegrations = () => {
                 {solutions.map((solution) => (
                   <div
                     key={solution.number}
-                    className="group rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
-                        {solution.number}
-                      </span>
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                      <span
-                        className={`h-2 w-2 rounded-full ${solution.accent}`}
-                      />
+                    <div className="p-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
+                          {solution.number}
+                        </span>
+
+                        <span
+                          className={`h-2 w-2 rounded-full ${solution.accent}`}
+                        />
+                      </div>
+
+                      <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
+                        {solution.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-muted">
+                        {solution.description}
+                      </p>
                     </div>
-
-                    <h3 className="mt-6 text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
-                      {solution.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-6 text-muted">
-                      {solution.description}
-                    </p>
                   </div>
                 ))}
               </div>

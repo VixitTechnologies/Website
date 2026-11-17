@@ -9,6 +9,7 @@ const industries = [
     description:
       "Practical technology solutions for growing businesses building their digital operations.",
     solutions: ["Websites", "Business Software", "Automation", "Dashboards"],
+    image: "/images/industries/startups.png",
     accent: "bg-brand",
   },
   {
@@ -17,6 +18,7 @@ const industries = [
     description:
       "Digital solutions that support customer experiences and day-to-day hospitality operations.",
     solutions: ["Websites", "Booking Systems", "Integrations", "Reporting"],
+    image: "/images/industries/travel.png",
     accent: "bg-accent",
   },
   {
@@ -25,6 +27,7 @@ const industries = [
     description:
       "Technology for online stores, business operations, customer journeys, and data.",
     solutions: ["E-commerce", "Integrations", "Business Systems", "Analytics"],
+    image: "/images/industries/retail.png",
     accent: "bg-cyan-500",
   },
   {
@@ -33,6 +36,7 @@ const industries = [
     description:
       "Digital platforms and business systems that simplify administration, reporting, and workflows.",
     solutions: ["Web Platforms", "Internal Tools", "Reporting", "Automation"],
+    image: "/images/industries/education.png",
     accent: "bg-brand",
   },
   {
@@ -41,6 +45,7 @@ const industries = [
     description:
       "Technology that helps service businesses manage clients, processes, information, and operations.",
     solutions: ["Websites", "CRM Systems", "Automation", "Dashboards"],
+    image: "/images/industries/professional-services.png",
     accent: "bg-accent",
   },
   {
@@ -49,6 +54,7 @@ const industries = [
     description:
       "Business-focused technology for digital presence, internal processes, information, and reporting.",
     solutions: ["Websites", "Internal Systems", "Reporting", "Automation"],
+    image: "/images/industries/healthcare.png",
     accent: "bg-cyan-500",
   },
   {
@@ -57,6 +63,7 @@ const industries = [
     description:
       "Digital systems that support operational workflows, reporting, integrations, and business processes.",
     solutions: ["Business Software", "Integrations", "Reporting", "Automation"],
+    image: "/images/industries/telecommunications.png",
     accent: "bg-brand",
   },
 ];
@@ -104,14 +111,12 @@ const Industries = () => {
               <div className="absolute h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
 
               {/* Floating card */}
-              <div className="group relative w-full max-w-[520px] rotate-1 rounded-[28px] border border-white/80 bg-white/60 p-3 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:rotate-0 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
-                <div className="overflow-hidden rounded-[20px]">
-                  <img
-                    src="/images/services/industries.png"
-                    alt="Technology solutions across different industries"
-                    className="h-[280px] w-full object-contain transition-transform duration-700 group-hover:scale-105 lg:h-[340px]"
-                  />
-                </div>
+              <div className="group relative flex aspect-[5/4] w-full max-w-[520px] items-center justify-center overflow-hidden rounded-[28px] border border-white/80 bg-white/60 p-5 shadow-[0_30px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_80px_rgba(124,58,237,0.20)]">
+                <img
+                  src="/images/services/industries.png"
+                  alt="Technology solutions across different industries"
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
             </div>
           </div>
@@ -140,13 +145,21 @@ const Industries = () => {
               {industries.map((industry) => (
                 <article
                   key={industry.number}
-                  className="group relative min-h-[310px] overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md lg:p-7"
+                  className="group relative min-h-[270px] overflow-hidden rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-md lg:p-6"
                 >
+                  <img
+                    src={industry.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover opacity-25 transition-all duration-500 group-hover:scale-105 group-hover:opacity-35"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/75 to-white/65" />
                   <div
                     className={`absolute left-0 top-0 h-1 w-0 ${industry.accent} transition-all duration-300 group-hover:w-full`}
                   />
 
-                  <div className="flex items-center justify-between">
+                  <div className="relative z-10 flex items-center justify-between">
                     <span className="text-[10px] font-semibold tracking-[0.15em] text-subtle">
                       {industry.number}
                     </span>
@@ -156,7 +169,7 @@ const Industries = () => {
                     />
                   </div>
 
-                  <div className="mt-10">
+                  <div className="relative z-10 mt-7">
                     <h2 className="text-xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-brand">
                       {industry.title}
                     </h2>
@@ -166,7 +179,7 @@ const Industries = () => {
                     </p>
                   </div>
 
-                  <div className="absolute bottom-6 left-6 right-6 border-t border-border pt-4 lg:left-7 lg:right-7">
+                  <div className="absolute bottom-5 left-5 right-5 z-10 border-t border-border pt-3 lg:left-6 lg:right-6">
                     <p className="mb-3 text-[9px] font-semibold tracking-[0.15em] text-subtle">
                       SOLUTION AREAS
                     </p>
@@ -222,44 +235,44 @@ const Industries = () => {
 
             {/* Process */}
             <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-border bg-white p-5">
+              <div className="rounded-2xl border border-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <span className="text-[10px] font-semibold tracking-[0.15em] text-brand">
                   01
                 </span>
-                <h3 className="mt-4 text-sm font-semibold text-ink">
+                <h3 className="mt-3 text-sm font-semibold text-ink">
                   Understand
                 </h3>
-                <p className="mt-2 text-xs leading-5 text-muted">
+                <p className="mt-1.5 text-xs leading-5 text-muted">
                   Understand your business and the problem to solve.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-white p-5">
+              <div className="rounded-2xl border border-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <span className="text-[10px] font-semibold tracking-[0.15em] text-accent">
                   02
                 </span>
                 <h3 className="mt-4 text-sm font-semibold text-ink">Design</h3>
-                <p className="mt-2 text-xs leading-5 text-muted">
+                <p className="mt-1.5 text-xs leading-5 text-muted">
                   Define a practical solution around your requirements.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-white p-5">
+              <div className="rounded-2xl border border-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <span className="text-[10px] font-semibold tracking-[0.15em] text-cyan-600">
                   03
                 </span>
                 <h3 className="mt-4 text-sm font-semibold text-ink">Build</h3>
-                <p className="mt-2 text-xs leading-5 text-muted">
+                <p className="mt-1.5 text-xs leading-5 text-muted">
                   Develop and integrate the technology needed.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-white p-5">
+              <div className="rounded-2xl border border-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <span className="text-[10px] font-semibold tracking-[0.15em] text-brand">
                   04
                 </span>
                 <h3 className="mt-4 text-sm font-semibold text-ink">Improve</h3>
-                <p className="mt-2 text-xs leading-5 text-muted">
+                <p className="mt-1.5 text-xs leading-5 text-muted">
                   Continue improving the solution as your business evolves.
                 </p>
               </div>
@@ -317,7 +330,7 @@ const Industries = () => {
                   to improve, and let&apos;s explore the right solution.
                 </p>
 
-                <div className="mt-7">
+                <div className="relative z-10 mt-7">
                   <Button href="/contact">
                     Talk to Us
                     <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -21,15 +21,30 @@ const Footer = () => {
               practical digital solutions around your business.
             </p>
 
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/vixit-technologies-66261b23a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-xs text-slate-400 transition-colors hover:text-[#60A5FA]"
-            >
-              <FaLinkedinIn className="text-sm" />
-            </a>
+            {/* Social Media Links */}
+            <div className="mt-6 flex items-center gap-5">
+              <a
+                href="https://www.linkedin.com/in/vixit-technologies-66261b23a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="text-slate-400 transition-colors hover:text-[#60A5FA]"
+              >
+                <FaLinkedinIn className="text-lg" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/yourusername/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+                className="text-slate-400 transition-colors hover:text-[#E879A9]"
+              >
+                <FaInstagram className="text-lg" />
+              </a>
+            </div>
           </div>
 
           {/* Services */}

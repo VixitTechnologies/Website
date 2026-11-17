@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+import type { CSSProperties } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { MdPhone, MdEmail } from "react-icons/md";
 
 const Contact = () => {
+  const [selectedService, setSelectedService] = useState("");
+  const [otherService, setOtherService] = useState("");
+  const [phone, setPhone] = useState("");
+
   const inputStyles =
     "mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition-all duration-200 placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/10";
 
@@ -49,9 +57,9 @@ const Contact = () => {
                 <div className="mt-6 h-1 w-12 rounded-full bg-brand" />
 
                 <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
-                  Whether you need a website, custom software, dashboard,
-                  automation, integration, or ongoing technical support, share
-                  your requirements with us.
+                  Have an early idea, a business challenge, or need guidance?
+                  Start a conversation with us. We&apos;ll help you explore
+                  possible solutions and understand your requirements.
                 </p>
 
                 <div className="mt-10 space-y-4">
@@ -169,15 +177,29 @@ const Contact = () => {
                       Phone
                     </label>
 
-                    <input
-                      id="phone"
-                      type="tel"
-                      placeholder="+91"
-                      className={inputStyles}
+                    <PhoneInput
+                      defaultCountry="in"
+                      preferredCountries={["in", "us", "gb", "ae"]}
+                      value={phone}
+                      onChange={setPhone}
+                      name="phone"
+                      placeholder="Phone number"
+                      className="mt-2 w-full"
+                      style={
+                        {
+                          width: "100%",
+                          "--react-international-phone-height": "46px",
+                          "--react-international-phone-border-radius": "12px",
+                          "--react-international-phone-border-color": "#e2e8f0",
+                          "--react-international-phone-font-size": "14px",
+                        } as CSSProperties
+                      }
+                      inputClassName="!w-full !text-sm !text-ink"
                     />
                   </div>
                 </div>
 
+                {/* SERVICE REQUIRED */}
                 <div className="mt-6">
                   <label
                     htmlFor="service"
@@ -186,7 +208,15 @@ const Contact = () => {
                     Service Required
                   </label>
 
-                  <select id="service" defaultValue="" className={inputStyles}>
+                  <select
+                    id="service"
+                    value={selectedService}
+                    onChange={(e) => {
+                      setSelectedService(e.target.value);
+                      setOtherService("");
+                    }}
+                    className={inputStyles}
+                  >
                     <option value="" disabled>
                       Select a service
                     </option>
@@ -196,30 +226,31 @@ const Contact = () => {
                     <option>Automation</option>
                     <option>Cloud & Integrations</option>
                     <option>Support & Maintenance</option>
-                    <option>Not Sure</option>
+                    <option>Others</option>
                   </select>
+
+                  {selectedService === "Others" && (
+                    <div className="mt-4">
+                      <label
+                        htmlFor="otherService"
+                        className="text-xs font-medium text-ink"
+                      >
+                        Please specify your requirement
+                      </label>
+
+                      <input
+                        id="otherService"
+                        type="text"
+                        value={otherService}
+                        onChange={(e) => setOtherService(e.target.value)}
+                        placeholder="Tell us what service you need"
+                        className={inputStyles}
+                      />
+                    </div>
+                  )}
                 </div>
 
-                <div className="mt-6">
-                  <label
-                    htmlFor="budget"
-                    className="text-xs font-medium text-ink"
-                  >
-                    Budget
-                  </label>
-
-                  <select id="budget" defaultValue="" className={inputStyles}>
-                    <option value="" disabled>
-                      Select a budget range
-                    </option>
-                    <option>Under ₹50,000</option>
-                    <option>₹50,000 – ₹1,00,000</option>
-                    <option>₹1,00,000 – ₹3,00,000</option>
-                    <option>₹3,00,000+</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-
+                {/* TIMELINE */}
                 <div className="mt-6">
                   <label
                     htmlFor="timeline"
@@ -240,6 +271,7 @@ const Contact = () => {
                   </select>
                 </div>
 
+                {/* PROJECT DESCRIPTION */}
                 <div className="mt-6">
                   <label
                     htmlFor="message"
